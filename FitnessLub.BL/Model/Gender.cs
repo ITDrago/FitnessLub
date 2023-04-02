@@ -4,6 +4,7 @@ namespace FitnessLub.BL.Model
 {   /// <summary>
     /// Gender.     
     /// </summary>
+    [Serializable]
     internal class Gender
     {
         /// <summary>
