@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessLub.BL", "FitnessLub.BL\FitnessLub.BL.csproj", "{6F36777E-D658-44C5-B003-4CF9E243BE78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessLub.BL", "FitnessLub.BL\FitnessLub.BL.csproj", "{6F36777E-D658-44C5-B003-4CF9E243BE78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessLub.CMD", "FitnessLub.CMD\FitnessLub.CMD.csproj", "{861284B3-7C2C-4355-84FE-59034E534904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessLub.CMD", "FitnessLub.CMD\FitnessLub.CMD.csproj", "{861284B3-7C2C-4355-84FE-59034E534904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessLub.BLTests", "FitnessLub.BLTests\FitnessLub.BLTests.csproj", "{8C205B62-439E-41E9-919D-64E6C97FA3AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{861284B3-7C2C-4355-84FE-59034E534904}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{861284B3-7C2C-4355-84FE-59034E534904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{861284B3-7C2C-4355-84FE-59034E534904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C205B62-439E-41E9-919D-64E6C97FA3AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C205B62-439E-41E9-919D-64E6C97FA3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C205B62-439E-41E9-919D-64E6C97FA3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C205B62-439E-41E9-919D-64E6C97FA3AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
