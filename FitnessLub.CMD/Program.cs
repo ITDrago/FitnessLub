@@ -11,23 +11,48 @@ namespace FitnessLub.CMD
             Console.WriteLine();
             Console.Write("Enter the user name: ");
             var name = Console.ReadLine();
-            Console.WriteLine();
-            Console.Write("Enter the user gender: ");
-            var gender = Console.ReadLine();
-            Console.WriteLine();
-            Console.Write("Enter the user birth data: ");
-            var birthData = DateTime.Parse(Console.ReadLine()); //TODO: To rewrite
-            Console.WriteLine();
-            Console.Write("Enter the user weight: ");
-            var weight = Double.Parse(Console.ReadLine());
-            Console.WriteLine();
-            Console.Write("Enter the user height: ");
-            var height = Double.Parse(Console.ReadLine());
+            var userController = new UserController(name);
+            if (userController.IsNewUser)
+            {
+                Console.Write("Enter the gender: ");
+                var gender = Console.ReadLine();
+                DateTime birthData = ParseDataTime("birthData");
+                double weight = ParseDouble("weight");
+                double height = ParseDouble("height");
 
-            var userController = new UserController(name, gender, birthData, weight, height);
-            userController.Save();
+                userController.SetNewUserData(gender, birthData, weight, height);
+            }
+        }
+        private static double ParseDouble(string name)
+        {
+            while (true)
+            {
+                Console.Write($"Enter the {name}: ");
+                if (double.TryParse(Console.ReadLine(), out double value))
+                {
+                    return value;
+                }
+                else
+                {
+                    Console.WriteLine($"Incorrect format for {name}");
+                }
+            }
         }
 
-           
-    }
+        private static DateTime ParseDataTime(string name)
+        {
+            while (true)
+            {
+                Console.Write($"Enter the {name} (dd.MM.yyyy): ");
+                if (DateTime.TryParse(Console.ReadLine(), out DateTime value))
+                {
+                    return value;
+                }
+                else
+                {
+                    Console.WriteLine($"Incorrect format for {name}");
+                }
+            }
+        }
+    }        
 }
