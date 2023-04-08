@@ -6,7 +6,7 @@ namespace FitnessLub.BL.Controller
 {   /// <summary>
     /// User Controller.  
     /// </summary>
-    public class UserController    
+    public class UserController : ControllerBase
     {
         /// <summary>
         /// Application user.
@@ -14,6 +14,8 @@ namespace FitnessLub.BL.Controller
         private List<User> Users { get; }
 
         public User CurrentUser { get; }
+
+        private const string USERS_FILE_NAME = "users.dat";
 
         public bool IsNewUser { get; } = false;
         /// <summary>
@@ -48,11 +50,7 @@ namespace FitnessLub.BL.Controller
         /// </summary>
         public void Save()
         {
-            var formatter = new BinaryFormatter();
-            using(var fileStream = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fileStream, Users);
-            }
+            base.Save(USERS_FILE_NAME, Users);
         }
         /// <summary>
         /// Get user list.
@@ -60,19 +58,7 @@ namespace FitnessLub.BL.Controller
         /// <returns></returns>
         private  List<User> GetUserData()
         {
-            var formatter = new BinaryFormatter();
-            using (var fileStream = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                if(fileStream.Length > 0 && formatter.Deserialize(fileStream) is List<User> users)
-                {
-                    return users;
-                }
-                else
-                {
-                    return new List<User>();
-                }
-
-            }
+            return Load<List<User>>(USERS_FILE_NAME) ?? new List<User>();
         }
         public void SetNewUserData(string genderName, DateTime birthData, double weight = 1 , double height = 1)
         {
