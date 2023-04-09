@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Begin" xml:space="preserve">
+    <value>exercise start</value>
+  </data>
   <data name="BirthData" xml:space="preserve">
     <value>birthData</value>
   </data>
@@ -125,6 +128,15 @@
   </data>
   <data name="Carbohydrates" xml:space="preserve">
     <value>carbohydrates</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>exercise end</value>
+  </data>
+  <data name="Energy" xml:space="preserve">
+    <value>calorie consumption per minute</value>
+  </data>
+  <data name="EnterExerciseName" xml:space="preserve">
+    <value>Enter the exercise name:</value>
   </data>
   <data name="EnterGender" xml:space="preserve">
     <value>Enter the gender:</value>
@@ -135,8 +147,14 @@
   <data name="EnterThe" xml:space="preserve">
     <value>Enter the</value>
   </data>
+  <data name="EnterTheExercise" xml:space="preserve">
+    <value>Enter the exercise log</value>
+  </data>
   <data name="EnterTheProductName" xml:space="preserve">
     <value>Enter the product name</value>
+  </data>
+  <data name="ExitProgram" xml:space="preserve">
+    <value>Exit</value>
   </data>
   <data name="Fats" xml:space="preserve">
     <value>fats</value>
@@ -164,5 +182,8 @@
   </data>
   <data name="YouAte" xml:space="preserve">
     <value>You ate today</value>
+  </data>
+  <data name="YourExercise" xml:space="preserve">
+    <value>Your did today</value>
   </data>
 </root>

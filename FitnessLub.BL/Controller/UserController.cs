@@ -2,6 +2,8 @@
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
+
 namespace FitnessLub.BL.Controller
 {   /// <summary>
     /// User Controller.  
@@ -40,7 +42,7 @@ namespace FitnessLub.BL.Controller
             }
             else
             {
-                Console.WriteLine(CurrentUser);
+                Console.WriteLine($"|{CurrentUser}|");
             }
             
             
