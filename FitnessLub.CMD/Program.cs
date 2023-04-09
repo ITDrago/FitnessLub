@@ -9,17 +9,29 @@ namespace FitnessLub.CMD;
 public class Program
 {
     public static  ResourceManager resourceManager = new ResourceManager("FitnessLub.CMD.Languages.Messages", typeof(Program).Assembly);
+    public static System.Globalization.CultureInfo culture;
     static void Main(string[] args)
     {
         var userChoice = GetUserLanguage();
+        
         if (userChoice)
         {
-        var culture = CultureInfo.CreateSpecificCulture("ru-ru");
+             culture = CultureInfo.CreateSpecificCulture("ru-ru");
         }
+
+        else
+        {
+             culture = CultureInfo.CreateSpecificCulture("en-us");
+        }
+        
+
+        
+        
+        
         Console.WriteLine("\n");
-        Console.WriteLine(resourceManager.GetString("Welcome"));
+        Console.WriteLine(resourceManager.GetString("Welcome",culture));
         Console.WriteLine();
-        Console.Write(resourceManager.GetString("UserName"));
+        Console.Write(resourceManager.GetString("UserName",culture));
         var name = Console.ReadLine();
         var userController = new UserController(name);
         var eatingController = new EatingController(userController.CurrentUser);
@@ -27,16 +39,16 @@ public class Program
         {
             Console.Write(resourceManager.GetString("EnterGender"));
             var gender = Console.ReadLine();
-            DateTime birthData = ParseDataTime(resourceManager.GetString("BirthData"));
-            double weight = ParseDouble(resourceManager.GetString("Weight"));
-            double height = ParseDouble(resourceManager.GetString("Height"));
+            DateTime birthData = ParseDataTime(resourceManager.GetString("BirthData", culture));
+            double weight = ParseDouble(resourceManager.GetString("Weight",culture));
+            double height = ParseDouble(resourceManager.GetString("Height",culture));
 
             userController.SetNewUserData(gender, birthData, weight, height);
         }
         Console.WriteLine();
-        Console.WriteLine($"E - {resourceManager.GetString("EnterMeal")}");
+        Console.WriteLine($"E - {resourceManager.GetString("EnterMeal",culture)}");
         Console.WriteLine();
-        Console.Write($"{resourceManager.GetString("WhatDo")}: ");
+        Console.Write($"{resourceManager.GetString("WhatDo",culture)}: ");
         
         var key = Console.ReadKey();
 
@@ -44,7 +56,7 @@ public class Program
         {
             var foods = EnterEating();
             eatingController.Add(foods.Food, foods.Weight);
-            Console.WriteLine($"{resourceManager.GetString("YouAte")}:        ");
+            Console.WriteLine($"{resourceManager.GetString("YouAte",culture)}:        ");
             foreach (var item in eatingController.Eating.Foods)
             {
                 Console.WriteLine($"\t{item.Key} - {item.Value}");  
@@ -56,14 +68,14 @@ public class Program
     private static (Food Food, double Weight) EnterEating()
     {
         Console.WriteLine();
-        Console.Write($"{resourceManager.GetString("EnterTheProductName")}: ");
+        Console.Write($"{resourceManager.GetString("EnterTheProductName",culture)}: ");
         var food = Console.ReadLine();
 
-        var colories = ParseDouble(resourceManager.GetString("Calories"));
-        var prot = ParseDouble(resourceManager.GetString("Proteins"));
-        var fats = ParseDouble(resourceManager.GetString("Fats"));
-        var carbohydrates = ParseDouble(resourceManager.GetString("Carbohydrates"));
-        var weight = ParseDouble(resourceManager.GetString("WeightOf"));
+        var colories = ParseDouble(resourceManager.GetString("Calories",culture));
+        var prot = ParseDouble(resourceManager.GetString("Proteins",culture));
+        var fats = ParseDouble(resourceManager.GetString("Fats",culture));
+        var carbohydrates = ParseDouble(resourceManager.GetString("Carbohydrates",culture));
+        var weight = ParseDouble(resourceManager.GetString("WeightOf",culture));
         var product = new Food(food,colories,prot,fats,carbohydrates);
         return (Food: product, Weight: weight);
     }
@@ -72,7 +84,7 @@ public class Program
     {
         while (true)
         {
-            Console.Write($"{resourceManager.GetString("EnterThe")} {name}: ");
+            Console.Write($"{resourceManager.GetString("EnterThe",culture)} {name}: ");
             if (double.TryParse(Console.ReadLine(), out double value))
             {
                 return value;
@@ -88,7 +100,7 @@ public class Program
     {
         while (true)
         {
-            Console.Write($"{resourceManager.GetString("EnterThe")} {name} (dd.MM.yyyy): ");
+            Console.Write($"{resourceManager.GetString("EnterThe",culture)} {name} (dd.MM.yyyy): ");
             if (DateTime.TryParse(Console.ReadLine(), out DateTime value))
             {
                 return value;
@@ -99,7 +111,7 @@ public class Program
             }
         }
     }
-    public static  bool GetUserLanguage()
+    public static bool GetUserLanguage()
     {
         Console.WriteLine();
         Console.WriteLine("Default language: English");

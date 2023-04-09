@@ -118,51 +118,51 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BirthData" xml:space="preserve">
-    <value>дату рождения</value>
+    <value>birthData</value>
   </data>
   <data name="Calories" xml:space="preserve">
-    <value>каллории</value>
+    <value>calories</value>
   </data>
   <data name="Carbohydrates" xml:space="preserve">
-    <value>углеводы</value>
+    <value>carbohydrates</value>
   </data>
   <data name="EnterGender" xml:space="preserve">
-    <value>Введите пол:</value>
+    <value>Enter the gender:</value>
   </data>
   <data name="EnterMeal" xml:space="preserve">
-    <value>Вести журнал питания</value>
+    <value>Enter a meal</value>
   </data>
   <data name="EnterThe" xml:space="preserve">
-    <value>Введите</value>
+    <value>Enter the</value>
   </data>
   <data name="EnterTheProductName" xml:space="preserve">
-    <value>Введите название продукта</value>
+    <value>Enter the product name</value>
   </data>
   <data name="Fats" xml:space="preserve">
-    <value>жиры</value>
+    <value>fats</value>
   </data>
   <data name="Height" xml:space="preserve">
-    <value>рост</value>
+    <value>height</value>
   </data>
   <data name="Proteins" xml:space="preserve">
-    <value>белки</value>
+    <value>proteins</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>Введите имя польщователя:</value>
+    <value>Enter the user name:</value>
   </data>
   <data name="Weight" xml:space="preserve">
-    <value>вес</value>
+    <value>weight</value>
   </data>
   <data name="WeightOf" xml:space="preserve">
-    <value>размер порции</value>
+    <value>weight of the portion</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Вас приветсвует приложение FintessLub!</value>
+    <value>Welcome FitnessLub!</value>
   </data>
   <data name="WhatDo" xml:space="preserve">
-    <value>Что вы хотите сделать</value>
+    <value>What do you want to do</value>
   </data>
   <data name="YouAte" xml:space="preserve">
-    <value>Вы сегодня сьели</value>
+    <value>You ate today</value>
   </data>
 </root>
