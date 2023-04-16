@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace FitnessLub.BL.Model
 {
     [Serializable]
     public class Activity
     {
-        public string Name { get; }
+        public int Id { get; set; }
 
-        public double CaloriesPerMinute { get; }
+        public string Name { get; set;}
+
+        public virtual ICollection<Exercise> Exercises { get; set; }
+        public double CaloriesPerMinute { get; set; }
         public Activity(string name, double caloriesPerMinute)
         {
             // Verification
@@ -22,5 +20,6 @@ namespace FitnessLub.BL.Model
         {
             return Name;
         }
+        public Activity() { }
     }
 }

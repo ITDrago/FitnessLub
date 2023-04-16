@@ -1,6 +1,4 @@
-﻿using System;
-
-
+﻿
 namespace FitnessLub.BL.Model
 {/// <summary>
  /// User.
@@ -9,6 +7,12 @@ namespace FitnessLub.BL.Model
     public class User
     {
         #region Properties
+
+        /// <summary>
+        /// User ID
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// Name. 
         /// </summary>
@@ -16,7 +20,9 @@ namespace FitnessLub.BL.Model
         /// <summary>
         /// Gender.
         /// </summary>
-        public Gender Gender { get; set; }
+        
+        public int? GenderId { get; set; }
+        public virtual Gender Gender { get; set; }
         /// <summary>
         /// Birth Data.
         /// </summary>
@@ -29,8 +35,12 @@ namespace FitnessLub.BL.Model
         /// Height.
         /// </summary>
         public double Height { get; set; }
+        public virtual ICollection<Eating> Eatings { get; set; }
+        public virtual ICollection<Exercise> Exercises { get; set; }
 
         public int Age { get { return DateTime.Now.Year - BirthData.Year; }}
+        public User() { }
+
         #endregion
         /// <summary>
         /// Create new User.

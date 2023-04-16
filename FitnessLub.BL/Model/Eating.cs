@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FitnessLub.BL.Model
 {
@@ -13,15 +10,20 @@ namespace FitnessLub.BL.Model
     [Serializable]
     public class Eating
     {
+        public int Id { get; set; }
+
         public DateTime Moment { get; set; }
 
-        public Dictionary<Food, double> Foods { get; }
+        [NotMapped]
+        public Dictionary<Food, double> Foods { get; set; }
 
-        public User User { get; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
 
-        public Eating(User user)
+        public Eating() { }
+        public Eating(User User)
         {
-            User = user ?? throw new ArgumentNullException("User Name cannot be empty or null!", nameof(user));
+            this.User = User ?? throw new ArgumentNullException("User Name cannot be empty or null!", nameof(User));
             Moment = DateTime.UtcNow;
             Foods = new Dictionary<Food, double>();
         }

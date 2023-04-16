@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using FitnessLub.BL.Controller;
 using FitnessLub.BL.Model;
 using System.Resources;

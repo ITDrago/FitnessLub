@@ -1,8 +1,4 @@
 ﻿using FitnessLub.BL.Model;
-using System;
-using System.Runtime.Serialization.Formatters.Binary;
-
-
 
 namespace FitnessLub.BL.Controller
 {   /// <summary>
@@ -10,6 +6,7 @@ namespace FitnessLub.BL.Controller
     /// </summary>
     public class UserController : ControllerBase
     {
+        
         /// <summary>
         /// Application user.
         /// </summary>
@@ -17,14 +14,13 @@ namespace FitnessLub.BL.Controller
 
         public User CurrentUser { get; }
 
-        private const string USERS_FILE_NAME = "users.dat";
-
         public bool IsNewUser { get; } = false;
         /// <summary>
         /// Create new user controller.
         /// </summary>
         /// <param name="user"></param>
         /// <exception cref="ArgumentNullException"></exception>
+        
         public UserController(string userName)
         {
             if (string.IsNullOrWhiteSpace(userName))
@@ -52,7 +48,7 @@ namespace FitnessLub.BL.Controller
         /// </summary>
         public void Save()
         {
-            base.Save(USERS_FILE_NAME, Users);
+            Save(Users);
         }
         /// <summary>
         /// Get user list.
@@ -60,7 +56,7 @@ namespace FitnessLub.BL.Controller
         /// <returns></returns>
         private  List<User> GetUserData()
         {
-            return Load<List<User>>(USERS_FILE_NAME) ?? new List<User>();
+            return Load<User>() ?? new List<User>();
         }
         public void SetNewUserData(string genderName, DateTime birthData, double weight = 1 , double height = 1)
         {

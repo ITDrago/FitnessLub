@@ -1,16 +1,11 @@
 ﻿using FitnessLub.BL.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace FitnessLub.BL.Controller
 {
     public class ExerciseController : ControllerBase
     {
-        private const string EXERCISES_FILE_NAME = "exercises.dat";
-        private const string ACTIVITIES_FILE_NAME = "activities.dat";
+       
 
         private readonly User user;
 
@@ -29,7 +24,7 @@ namespace FitnessLub.BL.Controller
 
         public List<Activity> GetAllActivities()
         {
-            return Load<List<Activity>>(ACTIVITIES_FILE_NAME) ?? new List<Activity>();
+            return Load<Activity>() ?? new List<Activity>();
         }
 
         public void Add(Activity activity, DateTime begin, DateTime end)
@@ -51,13 +46,13 @@ namespace FitnessLub.BL.Controller
 
         public List<Exercise> GetAllExercises()
         {
-            return Load<List<Exercise>>(EXERCISES_FILE_NAME) ?? new List<Exercise>();
+            return Load<Exercise>() ?? new List<Exercise>();
         }
 
         private  void Save()
         {
-             Save(EXERCISES_FILE_NAME, Exercises);
-            Save(ACTIVITIES_FILE_NAME, Activities);
+            Save(Exercises);
+            Save(Activities);
 
         }
     }

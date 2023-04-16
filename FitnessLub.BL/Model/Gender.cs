@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace FitnessLub.BL.Model
 {   /// <summary>
     /// Gender.     
@@ -8,9 +7,15 @@ namespace FitnessLub.BL.Model
     public class Gender
     {
         /// <summary>
+        /// Gender ID
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// Name.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
+        public virtual ICollection<User> Users { get; set; }
 
         /// <summary>
         /// Create new Gender.
@@ -30,6 +35,7 @@ namespace FitnessLub.BL.Model
         {
             return Name;
         }
+        public Gender() { }
     }
 }
 

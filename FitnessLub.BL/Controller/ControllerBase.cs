@@ -1,38 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FitnessLub.BL.Controller
 {
-    public class ControllerBase
+    public abstract class ControllerBase
     {
-        public void Save(string fileName, object item)
+
+        private readonly IDataSaver dataSaver = new SerializeDataSaver();
+        protected void Save<T>(List<T> item) where T : class
         {
-            var formatter = new BinaryFormatter();
-            using (var fileStream = new FileStream(fileName, FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fileStream, item);
-            }
+            dataSaver.Save(item);
         }
 
-        public T Load<T>(string fileName)
+        protected List<T> Load<T>() where T : class
         {
-            var formatter = new BinaryFormatter();
-            using (var fileStream = new FileStream(fileName, FileMode.OpenOrCreate))
-            {
-                if (fileStream.Length > 0 && formatter.Deserialize(fileStream) is T items )
-                {
-                    return items;
-                }
-                else
-                {
-                    return default(T);
-                }
-
-            }
+            return dataSaver.Load<T>();
         }
     }
 }
+    

@@ -1,27 +1,20 @@
 ﻿using FitnessLub.BL.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FitnessLub.BL.Controller
 {
     public class EatingController : ControllerBase
     {
-        private const string FOODS_FILE_NAME = "foods.dat";
-        private const string EATINGS_FILE_NAME = "eatings.dat";
+
             
-        private readonly User user;
+        private readonly User User;
 
         public List<Food> Foods { get; }
 
         public Eating Eating { get; }
 
-        public EatingController(User user)
+        public EatingController(User User)
         {
-            this.user = user ?? throw new ArgumentNullException("User cannot be empty!", nameof(user));
+            this.User = User ?? throw new ArgumentNullException("User cannot be empty!", nameof(User));
             Foods = GetAllFoods();
             Eating = GetEating();
         }
@@ -42,18 +35,18 @@ namespace FitnessLub.BL.Controller
         }
         private Eating GetEating()
         {
-            return Load<Eating>(EATINGS_FILE_NAME) ?? new Eating(user);
+            return Load<Eating>().FirstOrDefault() ?? new Eating(User);
         }
 
         private List<Food> GetAllFoods()
         {
-            return Load<List<Food>>(FOODS_FILE_NAME) ?? new List<Food>();
+            return Load<Food>() ?? new List<Food>();
         }
 
         private void Save()
         {
-            base.Save(FOODS_FILE_NAME, Foods);
-            base.Save(EATINGS_FILE_NAME, Eating);
+            Save(Foods);
+            Save(new List<Eating>() { Eating });
         }
 
     }
